@@ -1,0 +1,13 @@
+.contain {
+  background-color: #091133;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+.bg-image {
+  margin: auto;
+  display: block;
+}
