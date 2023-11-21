@@ -1,14 +1,46 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import GraduateDash from "./GraduateDash/GraduateDash";
+import Home from "./Home/Home";
 import Login from "./Login/Login";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./Register/Register";
+import { auth } from "./firebase";
+import PrivateRoute from "./PrivateRoute";
+import Testing from "./Testing/Testing";
 
 const App = () => {
+  const [user] = useAuthState(auth);
+
+  // const PrivateRoute = ({ path, element }) => {
+  //   return user ? (
+  //     <Route path={path} element={element} />
+  //   ) : (
+  //     <Navigate to="/login" replace />
+  //   );
+  // };
+
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" exact element={<Login />}></Route>
+        {/* Public routes accessible to all users */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/graduate-dashboard" element={<GraduateDash />} />
+        <Route path="/testing" element={<Testing />} />
+
+        {/* <Route
+          path="/graduate-dash"
+          element={
+            <PrivateRoute>
+              <GraduateDash />
+            </PrivateRoute>
+          }
+        /> */}
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
+
 export default App;

@@ -1,0 +1,16 @@
+.contain {
+  background-color: #091133;
+}
+
+.bg-image {
+  margin: auto;
+  display: block;
+}
+
+.h1 {
+  color: white;
+  font-family: "Inika", sans-serif;
+  font-size: 80px;
+  font-weight: bold;
+  margin-bottom: 0;
+}

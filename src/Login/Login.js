@@ -1,38 +1,85 @@
-import React, { useState, useEffect } from "react";
-import Splash from "../Splash/Splash";
-import styles from "./Login.module.css";
+import React, { useState } from "react";
 import "./Login.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [loading, setLoading] = useState(false);
+  const auth = getAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login Successful");
+      navigate("/graduate-dashboard");
+    } catch (error) {
+      const errorMessage = error.message;
+      alert(errorMessage);
+    }
+  };
 
   return (
-    <div>
-      {loading ? (
-        <Splash loading="loading" />
-      ) : (
-        <body>
-          <Container className={styles["contain"]}>
-            <h1>Hello Testing</h1>
-            <Image
-              className={styles["bg-image"]}
-              src="/images/BGray.png"
-              alt="show-logo"
-            />
-          </Container>
-        </body>
-      )}
+    <div className="loginContainer">
+      <div className="leftContent">
+        <div className="white-bg">
+          <div className="registerText">
+            <h2 className="loginHeader">Login</h2>
+            <p>
+              Don't have an account yet?{" "}
+              <span className="registerLink">Register here</span>.
+            </p>
+            <div className="loginForm">
+              <label htmlFor="email">Email Address</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <div>
+                <input
+                  className="rememberbox"
+                  type="checkbox"
+                  id="remember"
+                  name="remember"
+                  checked={remember}
+                  onChange={() => setRemember(!remember)}
+                />
+                <label className="rememberbtn" htmlFor="remember">
+                  Remember me
+                </label>
+              </div>
+
+              <button className="button-login" onClick={handleLogin}>
+                LOGIN
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="imagePlaceholder">
+        <img src="./images/LoginVector.png" alt="Placeholder" />
+      </div>
     </div>
   );
 };

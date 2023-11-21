@@ -1,0 +1,55 @@
+.center {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+}
+
+.col-md-auto {
+  padding: 0px;
+}
+
+body {
+  background-color: #091133;
+}
+
+.body-white {
+  background-color: white;
+}
+
+.container {
+  height: 100vh;
+}
+
+.spacer {
+  height: 15px;
+}
+
+.spacer-header {
+  height: 25px;
+}
+
+.button-width {
+  width: 120px;
+  color: white;
+  font-family: "Nunito", sans-serif;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.underline-text {
+  border-bottom: 1.5px solid #d6d5cb; /* Adjust the color and thickness of the line */
+  display: inline-block; /* Ensures that the border only spans the width of the text */
+  width: 600px;
+  margin-bottom: 10px; /* Adjust the space between the text and the line */
+  font-size: 85px;
+  font-weight: bold;
+}
+
+.text-center {
+  color: white;
+  outline: black;
+}
