@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const auth = getAuth();
@@ -31,8 +32,10 @@ const Login = () => {
           <div className="registerText">
             <h2 className="loginHeader">Login</h2>
             <p>
-              Don't have an account yet?{" "}
-              <span className="registerLink">Register here</span>.
+              Don't have an account yet?
+              <Link to="/register" className="registerLink">
+                Register here.
+              </Link>
             </p>
             <div className="loginForm">
               <label htmlFor="email">Email Address</label>

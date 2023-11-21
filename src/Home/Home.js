@@ -32,12 +32,12 @@ const Home = () => {
                 <h1 className="underline-text">UniVerseCity</h1>
               </div>
               <div className="spacer-header"></div>
-              <Link to="/Login">
+              <Link to="/login">
                 <button className="btn btn-primary button-width">Login</button>
               </Link>
 
               <div className="spacer"></div>
-              <Link to="/Register">
+              <Link to="/register">
                 <button className="btn btn-primary button-width">
                   Register
                 </button>
