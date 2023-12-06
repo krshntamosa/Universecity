@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="uts-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- font -->
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Balinese&family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <!-- icon -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+        <link rel="stylesheet" href="css/styles.css">
+        
+    </head>
+    <!--
+    <style>
+        #sidebar:not(.expand) .sidebar-list-items span 
+        {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s, visibility 0s linear 0.5s;
+        }
+    </style>-->
+    <body>
+        <div class="grid-container">
+            <header class="header">
+                <div class="menu-icon" onclick="opensidebar()">
+                    <span class="material-icons">menu</span>
+                </div> 
+                <div class="header-left">
+                    <img src="images\UVCLogo.png" alt="Logo">
+                </div>
+                <div class="header-right">
+                    <span class="material-icons">notifications</span>
+                </div>
+            </header>
+
+            <aside id="sidebar">
+                <div class="sidebar-title">
+                    <div class="sidebar-brand">
+                    </div>
+                </div>
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-items" onclick="openDashboard()">
+                        <span class="material-icons">home</span> 
+
+                    </li>
+                    <li class="sidebar-list-items">
+                        <span class="material-icons">admin_panel_settings</span> 
+                        
+                    </li>
+                    <li class="sidebar-list-items">
+                        <span class="material-icons">groups</span> 
+                        
+                    </li>
+                    <li class="sidebar-list-items">
+                        <span class="material-icons">school</span> 
+                        
+                    </li>
+                    <li class="sidebar-list-items" onclick="openUniversityProfile()">                        
+                        <span class="material-icons">badge</span>
+
+                    </li>
+                </ul>
+                
+            </aside>
+
+            <style>
+                .box-inner h3 
+                {
+                    margin-top: 0; 
+                }
+            </style>
+
+            <!-- DASHBOARD -->
+            <main class="main-container">
+                <div class="main-title">
+                    <h2> DASHBOARD</h2><p> Home/Analytic</p> 
+                </div>
+                <div class="main-box">
+                    <div class="box">
+                        <div class="box-inner">
+                            <h3> User Registration </h3>
+                        </div>
+                        <h1> 4582 </h1>
+                        <p class="additional-text"> New Users </p>
+                    </div>
+                    <div class="box">
+                        <div class="box-inner">
+                            <h3> Active Users </h3>
+                        </div>
+                        <h1> 7982 </h1>
+                        <p class="additional-text"> Active </p>
+                    </div>
+                    <div class="box">
+                        <div class="box-inner">
+                            <h3> Admin Users </h3>
+                        </div>
+                        <h1> 29 </h1>
+                        <p class="additional-text"> Admin Accounts </p>
+                    </div>
+                    <div class="box">
+                        <div class="box-inner">
+                            <h3> Graduate Users </h3>
+                        </div>
+                        <h1> 7953 </h1>
+                        <p class="additional-text"> Graduate Accounts </p>
+                    </div>
+                </div>
+            </main>
+
+            <!-- UNIVERSITY PROFILE VIEW -->
+            <main class="up-view"> 
+                
+            </main>
+        </div>
+        
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
