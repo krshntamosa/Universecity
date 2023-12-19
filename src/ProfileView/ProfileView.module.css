@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@font-face {
+  font-family: "Lato";
+  src: url("/public/fonts/Lato-SemiBold.ttf");
+  font-weight: 600;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+  background-color: var(--color-white);
+}
+:root {
+  /* fonts /
+  --font-poppins: Poppins;
+  --font-lato: Lato;
+
+  / font sizes /
+  --font-size-mini: 15px;
+  --font-size-lg: 18px;
+  --font-size-smi: 13px;
+
+  / Colors /
+  --color-white: #fff;
+  --color-darkgray: #b4b4b4;
+  --color-black: #000;
+  --color-gainsboro: #d9d9d9;
+  --color-royalblue: #0070e0;
+  --color-dimgray: #4d4d4d;
+
+  / Gaps /
+  --gap-xs: 12px;
+  --gap-95xl: 114px;
+  --gap-115xl: 134px;
+  --gap-94xl: 113px;
+  --gap-101xl: 120px;
+  --gap-86xl: 105px;
+  --gap-104xl: 123px;
+  --gap-138xl: 157px;
+
+  / Paddings /
+  --padding-12xs: 1px;
+
+  / Border radiuses */
+  --br-8xs: 5px;
+}

@@ -1,51 +1,18 @@
 import React, { useState, useEffect } from "react";
+import "./ProfileView.css";
+import "./ProfileView.module.css";
 import { Button, Form, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { auth, rtdb, fetchUserData } from "../firebase";
+import { auth, database } from "../firebase";
+import { getDatabase, ref, child, get } from "firebase/database";
+
+
+
+
 
 const ProfileView = () => {
-  const [isExpanded, setExpanded] = useState(false);
-  const [showText, setShowText] = useState(false);
 
-  const handleMouseEnter = () => {
-    setExpanded(true);
-    setTimeout(() => {
-      setShowText(true);
-    }, 150);
-  };
-
-  const handleMouseLeave = () => {
-    setExpanded(false);
-    setShowText(false);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Get the current user
-    const currentUser = auth.currentUser;
-
-    // Update the user data in Realtime Database
-    const userRef = rtdb.ref(`users/${currentUser.uid}`);
-    userRef
-      .update({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        university: user.university,
-        collegeDepartment: user.collegeDepartment,
-        collegeProgram: user.collegeProgram,
-        password: user.password,
-      })
-      .then(() => {
-        console.log("User data updated successfully");
-      })
-      .catch((error) => {
-        console.error("Error updating user data: ", error);
-      });
-  };
-
-  const [user, setUser] = useState({
+  const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -55,18 +22,50 @@ const ProfileView = () => {
     password: "",
   });
 
+
+  const [isExpanded, setExpanded] = useState(false);
+  const [showText, setShowText] = useState(false);
+
+
   useEffect(() => {
-    auth().onAuthStateChanged((user) => {
-      if (user) {
-        const userId = user.uid;
-        fetchUserData(userId, (userData) => {
-          setUser(userData);
-        });
-      } else {
-        // Handle user signed out
+    const fetchUserData = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user) {
+          const userId = user.uid;
+          const dbRef = ref(getDatabase());
+          const snapshot = await get(child(dbRef, `users/${userId}`));
+
+          if (snapshot.exists()) {
+            const userDataFromDB = snapshot.val();
+            console.log("userDataFromDB:", userDataFromDB);
+            setUserData(userDataFromDB);
+          } else {
+            console.log("No data available");
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
       }
-    });
+    };
+
+    fetchUserData();
   }, []);
+
+  const handleMouseEnter = () => {
+    setExpanded(true);
+    setTimeout(() => {
+      setShowText(true);
+    }, 150);
+  };
+  const handleMouseLeave = () => {
+    setExpanded(false);
+    setShowText(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="profileView">
@@ -75,12 +74,15 @@ const ProfileView = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <button className="account">
-          <img className="account-icon" alt="" src="/images/vector7.svg" />
-          {isExpanded && showText && (
-            <span className="sidebar-text">Account</span>
-          )}
-        </button>
+        <Link to="/profile-view">
+          <button className="account">
+            <img className="account-icon" alt="" src="/images/vector7.svg" />
+            {isExpanded && showText && (
+              <span className="sidebar-text">Account</span>
+            )}
+          </button>
+        </Link>
+
         <button className="university-icon">
           <img className="university-icon1" alt="" src="/images/vector6.svg" />
           {isExpanded && showText && (
@@ -131,22 +133,80 @@ const ProfileView = () => {
           />
         </button>
       </div>
-      <Card.Body>
-        <Form onSubmit={handleSubmit}>
+      <div>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
           <Form.Group controlId="firstName">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              type="text"
-              value={user.firstName}
-              onChange={(e) => setUser({ ...user, firstName: e.target.value })}
-            />
-          </Form.Group>
-          {/* ... other Form.Group elements */}
-          <Button variant="primary" type="submit">
-            Update
-          </Button>
-        </Form>
-      </Card.Body>
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+             type="text"
+             value={userData.firstName}
+            
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="lastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+               type="text"
+               value={userData.lastName}
+               readOnly
+
+              />
+            </Form.Group>
+
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control
+                type="email"
+                value={userData.email}
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="university">
+              <Form.Label>University</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.university}
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="collegeDepartment">
+              <Form.Label>College Department</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.collegeDepartment}
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="collegeProgram">
+              <Form.Label>College Program</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.collegeProgram}
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.password}
+                readOnly
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Update
+            </Button>
+          </Form>
+        </Card.Body>
+      </div>
     </div>
   );
 };
