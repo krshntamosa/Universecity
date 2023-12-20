@@ -11,7 +11,7 @@
   padding: 0px;
 }
 
-body {
+.background-clr {
   background-color: #091133;
 }
 
@@ -52,4 +52,18 @@ body {
 .text-center {
   color: white;
   outline: black;
+}
+
+.backContainer {
+  background-color: #091133;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2133.33px;
+  height: 1032.22px;
+}
+
+.contain {
+  background-color: #091133;
 }

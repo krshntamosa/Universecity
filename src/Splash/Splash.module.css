@@ -1,5 +1,11 @@
 .background {
   background-color: #091133;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2133.33px;
+  height: 1032.22px;
 }
 
 body {

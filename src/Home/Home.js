@@ -22,29 +22,33 @@ const Home = () => {
       {loading ? (
         <Splash loading="loading" />
       ) : (
-        <body>
-          <div className="container d-flex align-items-center justify-content-center vh-100">
-            <div className="text-center">
-              <div
-                className="text-center"
-                style={{ fontFamily: "Inika, sans-serif" }}
-              >
-                <h1 className="underline-text">UniVerseCity</h1>
-              </div>
-              <div className="spacer-header"></div>
-              <Link to="/login">
-                <button className="btn btn-primary button-width">Login</button>
-              </Link>
+        <div className="backContainer">
+          <div className="contain">
+            <div className="container d-flex align-items-center justify-content-center vh-100">
+              <div className="text-center">
+                <div
+                  className="text-center"
+                  style={{ fontFamily: "Inika, sans-serif" }}
+                >
+                  <h1 className="underline-text">UniVerseCity</h1>
+                </div>
+                <div className="spacer-header"></div>
+                <Link to="/login">
+                  <button className="btn btn-primary button-width">
+                    Login
+                  </button>
+                </Link>
 
-              <div className="spacer"></div>
-              <Link to="/register">
-                <button className="btn btn-primary button-width">
-                  Register
-                </button>
-              </Link>
+                <div className="spacer"></div>
+                <Link to="/register">
+                  <button className="btn btn-primary button-width">
+                    Register
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
-        </body>
+        </div>
       )}
     </div>
   );

@@ -1,11 +1,68 @@
 import React, { useState, useEffect } from "react";
+import "./ProfileView.css";
+import "./ProfileView.module.css";
 import { Button, Form, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { auth, rtdb, fetchUserData } from "../firebase";
+import { auth, database } from "../firebase";
+import { getDatabase, ref, child, get } from "firebase/database";
+import { updatePassword } from "firebase/auth";
 
 const ProfileView = () => {
   const [isExpanded, setExpanded] = useState(false);
   const [showText, setShowText] = useState(false);
+  const [password, setPassword] = useState("");
+
+  // New state for user data
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    university: "",
+    collegeDepartment: "",
+    collegeProgram: "",
+  });
+
+  useEffect(() => {
+    // Set up a listener for authentication state changes
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log("Authenticated user ID:", user.uid);
+        // Fetch user data from Firebase
+        fetchData(user.uid);
+      } else {
+        console.log("No user is currently logged in.");
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
+
+  const fetchData = (userId) => {
+    const db = getDatabase();
+    const userRef = ref(db, `users/${userId}`);
+
+    get(userRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          console.log("Fetched user data:", snapshot.val());
+          const data = snapshot.val();
+          setUserData({
+            firstName: data.firstName || "",
+            lastName: data.lastName || "",
+            email: data.email || "",
+            university: data.university || "",
+            collegeDepartment: data.collegeDepartment || "",
+            collegeProgram: data.collegeProgram || "",
+          });
+        } else {
+          console.log("No data available for user ID:", userId);
+        }
+      })
+      .catch((error) => {
+        console.error("Firebase fetch error:", error);
+      });
+  };
 
   const handleMouseEnter = () => {
     setExpanded(true);
@@ -13,7 +70,6 @@ const ProfileView = () => {
       setShowText(true);
     }, 150);
   };
-
   const handleMouseLeave = () => {
     setExpanded(false);
     setShowText(false);
@@ -21,52 +77,21 @@ const ProfileView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted");
 
-    // Get the current user
-    const currentUser = auth.currentUser;
-
-    // Update the user data in Realtime Database
-    const userRef = rtdb.ref(`users/${currentUser.uid}`);
-    userRef
-      .update({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        university: user.university,
-        collegeDepartment: user.collegeDepartment,
-        collegeProgram: user.collegeProgram,
-        password: user.password,
-      })
-      .then(() => {
-        console.log("User data updated successfully");
-      })
-      .catch((error) => {
-        console.error("Error updating user data: ", error);
-      });
-  };
-
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    university: "",
-    collegeDepartment: "",
-    collegeProgram: "",
-    password: "",
-  });
-
-  useEffect(() => {
-    auth().onAuthStateChanged((user) => {
-      if (user) {
-        const userId = user.uid;
-        fetchUserData(userId, (userData) => {
-          setUser(userData);
+    if (auth.currentUser && password) {
+      console.log("Attempting to update password");
+      updatePassword(auth.currentUser, password)
+        .then(() => {
+          console.log("Password updated successfully!");
+        })
+        .catch((error) => {
+          console.error("Error updating password:", error);
         });
-      } else {
-        // Handle user signed out
-      }
-    });
-  }, []);
+    } else {
+      console.log("User is not authenticated or password is empty");
+    }
+  };
 
   return (
     <div className="profileView">
@@ -75,12 +100,15 @@ const ProfileView = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <button className="account">
-          <img className="account-icon" alt="" src="/images/vector7.svg" />
-          {isExpanded && showText && (
-            <span className="sidebar-text">Account</span>
-          )}
-        </button>
+        <Link to="/profile-view">
+          <button className="account">
+            <img className="account-icon" alt="" src="/images/vector7.svg" />
+            {isExpanded && showText && (
+              <span className="sidebar-text">Account</span>
+            )}
+          </button>
+        </Link>
+
         <button className="university-icon">
           <img className="university-icon1" alt="" src="/images/vector6.svg" />
           {isExpanded && showText && (
@@ -131,22 +159,63 @@ const ProfileView = () => {
           />
         </button>
       </div>
-      <Card.Body>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="firstName">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              type="text"
-              value={user.firstName}
-              onChange={(e) => setUser({ ...user, firstName: e.target.value })}
-            />
-          </Form.Group>
-          {/* ... other Form.Group elements */}
-          <Button variant="primary" type="submit">
-            Update
-          </Button>
-        </Form>
-      </Card.Body>
+      <div>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="firstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control type="text" value={userData.firstName} readOnly />
+            </Form.Group>
+
+            <Form.Group controlId="lastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control type="text" value={userData.lastName} readOnly />
+            </Form.Group>
+
+            <Form.Group controlId="email">
+              <Form.Label>Email Address</Form.Label>
+              <Form.Control type="email" value={userData.email} readOnly />
+            </Form.Group>
+
+            <Form.Group controlId="university">
+              <Form.Label>University</Form.Label>
+              <Form.Control type="text" value={userData.university} readOnly />
+            </Form.Group>
+
+            <Form.Group controlId="collegeDepartment">
+              <Form.Label>College Department</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.collegeDepartment}
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="collegeProgram">
+              <Form.Label>College Program</Form.Label>
+              <Form.Control
+                type="text"
+                value={userData.collegeProgram}
+                readOnly
+              />
+            </Form.Group>
+
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter new password"
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Update
+            </Button>
+          </Form>
+        </Card.Body>
+      </div>
     </div>
   );
 };
