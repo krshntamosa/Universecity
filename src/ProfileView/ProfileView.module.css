@@ -10,6 +10,7 @@ body {
   line-height: normal;
   background-color: var(--color-white);
 }
+
 :root {
   /* fonts /
   --font-poppins: Poppins;
