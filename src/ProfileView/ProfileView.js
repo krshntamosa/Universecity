@@ -6,26 +6,19 @@ import { Link } from "react-router-dom";
 import { auth, database } from "../firebase";
 import { getDatabase, ref, child, get } from "firebase/database";
 
-
-
-
-
 const ProfileView = () => {
-
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     university: "",
-    collegeDepartment: "",
-    collegeProgram: "",
+    department: "",
+    program: "",
     password: "",
   });
 
-
   const [isExpanded, setExpanded] = useState(false);
   const [showText, setShowText] = useState(false);
-
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -33,8 +26,8 @@ const ProfileView = () => {
         const user = auth.currentUser;
         if (user) {
           const userId = user.uid;
-          const dbRef = ref(getDatabase());
-          const snapshot = await get(child(dbRef, `users/${userId}`));
+          const dbRef = ref(database, `users/${userId}`);
+          const snapshot = await get(dbRef);
 
           if (snapshot.exists()) {
             const userDataFromDB = snapshot.val();
@@ -43,9 +36,11 @@ const ProfileView = () => {
           } else {
             console.log("No data available");
           }
+        } else {
+          console.log("User not authenticated");
         }
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching user data:", error.message);
       }
     };
 
@@ -134,78 +129,58 @@ const ProfileView = () => {
         </button>
       </div>
       <div>
-        <Card.Body>
-          <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="firstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-             type="text"
-             value={userData.firstName}
-            
-                readOnly
-              />
-            </Form.Group>
+        <div className="white-background">
+          <Card.Body>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="firstName">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" value={userData.firstName} readOnly />
+              </Form.Group>
 
-            <Form.Group controlId="lastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-               type="text"
-               value={userData.lastName}
-               readOnly
+              <Form.Group controlId="lastName">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control type="text" value={userData.lastName} readOnly />
+              </Form.Group>
 
-              />
-            </Form.Group>
+              <Form.Group controlId="email">
+                <Form.Label>Email Address</Form.Label>
+                <Form.Control type="email" value={userData.email} readOnly />
+              </Form.Group>
 
-            <Form.Group controlId="email">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control
-                type="email"
-                value={userData.email}
-                readOnly
-              />
-            </Form.Group>
+              <Form.Group controlId="university">
+                <Form.Label>University</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={userData.university}
+                  readOnly
+                />
+              </Form.Group>
 
-            <Form.Group controlId="university">
-              <Form.Label>University</Form.Label>
-              <Form.Control
-                type="text"
-                value={userData.university}
-                readOnly
-              />
-            </Form.Group>
+              <Form.Group controlId="collegeDepartment">
+                <Form.Label>College Department</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={userData.department}
+                  readOnly
+                />
+              </Form.Group>
 
-            <Form.Group controlId="collegeDepartment">
-              <Form.Label>College Department</Form.Label>
-              <Form.Control
-                type="text"
-                value={userData.collegeDepartment}
-                readOnly
-              />
-            </Form.Group>
+              <Form.Group controlId="collegeProgram">
+                <Form.Label>College Program</Form.Label>
+                <Form.Control type="text" value={userData.program} readOnly />
+              </Form.Group>
 
-            <Form.Group controlId="collegeProgram">
-              <Form.Label>College Program</Form.Label>
-              <Form.Control
-                type="text"
-                value={userData.collegeProgram}
-                readOnly
-              />
-            </Form.Group>
+              <Form.Group controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="text" value={userData.password} readOnly />
+              </Form.Group>
 
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="text"
-                value={userData.password}
-                readOnly
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Update
-            </Button>
-          </Form>
-        </Card.Body>
+              <Button variant="primary" type="submit">
+                Update
+              </Button>
+            </Form>
+          </Card.Body>
+        </div>
       </div>
     </div>
   );
