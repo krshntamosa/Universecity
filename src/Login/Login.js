@@ -26,62 +26,66 @@ const Login = () => {
   };
 
   return (
-    <div className="loginContainer">
-      <div className="leftContent">
-        <div className="white-bg">
-          <div className="registerText">
-            <h2 className="loginHeader">Login</h2>
-            <p>
-              Don't have an account yet?
-              <Link to="/register" className="registerLink">
-                Register here.
-              </Link>
-            </p>
-            <div className="loginForm">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+    <div className="backContainer">
+      <div className="contain">
+        <div className="loginContainer">
+          <div className="leftContent">
+            <div className="white-bg">
+              <div className="registerText">
+                <h2 className="loginHeader">Login</h2>
+                <p>
+                  Don't have an account yet?
+                  <Link to="/register" className="registerLink">
+                    Register here.
+                  </Link>
+                </p>
+                <div className="loginForm">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
 
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
 
-              <div>
-                <input
-                  className="rememberbox"
-                  type="checkbox"
-                  id="remember"
-                  name="remember"
-                  checked={remember}
-                  onChange={() => setRemember(!remember)}
-                />
-                <label className="rememberbtn" htmlFor="remember">
-                  Remember me
-                </label>
+                  <div>
+                    <input
+                      className="rememberbox"
+                      type="checkbox"
+                      id="remember"
+                      name="remember"
+                      checked={remember}
+                      onChange={() => setRemember(!remember)}
+                    />
+                    <label className="rememberbtn" htmlFor="remember">
+                      Remember me
+                    </label>
+                  </div>
+
+                  <button className="button-login" onClick={handleLogin}>
+                    LOGIN
+                  </button>
+                </div>
               </div>
-
-              <button className="button-login" onClick={handleLogin}>
-                LOGIN
-              </button>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="imagePlaceholder">
-        <img src="./images/LoginVector.png" alt="Placeholder" />
+          <div className="imagePlaceholder">
+            <img src="./images/LoginVector.png" alt="Placeholder" />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -129,3 +129,17 @@ body {
   margin-bottom: 0px;
   margin-top: 8px;
 }
+
+.backContainer {
+  background-color: #091133;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2133.33px;
+  height: 1032.22px;
+}
+
+.contain {
+  background-color: #091133;
+}

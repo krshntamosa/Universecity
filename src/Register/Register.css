@@ -117,3 +117,17 @@ body {
   margin: 0 10px;
   color: black; /* Adjust the color as needed */
 }
+
+.backContainer {
+  background-color: #091133;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2133.33px;
+  height: 1032.22px;
+}
+
+.contain {
+  background-color: #091133;
+}
