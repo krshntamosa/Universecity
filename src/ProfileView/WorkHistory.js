@@ -81,15 +81,18 @@ const WorkHistory = () => {
 
   const handleEditWorkHistory = () => {
     if (!selectedWorkHistory) return; // Check if a work history item is selected
-
+  
+    // Correctly reference the specific work history item using its ID
     const userWorkHistoryRef = ref(
       db,
       `users/${user.uid}/workHistory/${selectedWorkHistory.id}`
     );
-
+  
     update(userWorkHistoryRef, formData)
       .then(() => {
         handleCloseModal();
+        // Optionally, you might want to update your local state here
+        // to reflect the changes without needing to reload from the database.
       })
       .catch((error) => {
         console.error("Error updating work history:", error);
