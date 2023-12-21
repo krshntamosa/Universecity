@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "./GraduateDash.css";
-import "./GraduateDash.module.css";
+import "./AdminList.css";
+import "./AdminList.module.css";
 import { Button, Form, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { auth, database } from "../firebase";
 import { getDatabase, ref, child, get } from "firebase/database";
 import { updatePassword } from "firebase/auth";
 
-const GraduateDash = () => {
+const AdminList = () => {
   const [isExpanded, setExpanded] = useState(false);
   const [showText, setShowText] = useState(false);
   const [password, setPassword] = useState("");
@@ -121,4 +121,4 @@ const GraduateDash = () => {
   );
 };
 
-export default GraduateDash;
+export default AdminList;

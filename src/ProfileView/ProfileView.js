@@ -108,41 +108,60 @@ const ProfileView = () => {
             )}
           </button>
         </Link>
-
-        <button className="university-icon">
-          <img className="university-icon1" alt="" src="/images/vector6.svg" />
-          {isExpanded && showText && (
-            <span className="sidebar-text">University List</span>
-          )}
-        </button>
-        <button className="roles-and-permissions">
-          <img
-            className="roles-and-permissions1"
-            alt=""
-            src="/images/vector2.svg"
-          />
-          {isExpanded && showText && (
-            <span className="sidebar-text">Roles and Permissions</span>
-          )}
-        </button>
-        <button className="users-icon">
-          <img className="users-icon1" alt="" src="/images/users-icon-1.svg" />
-          {isExpanded && showText && (
-            <span className="sidebar-text">Graduate List</span>
-          )}
-        </button>
-        <button className="admin-list">
-          <img className="admin-list-icon" alt="" src="/images/vector11.svg" />
-          {isExpanded && showText && (
-            <span className="sidebar-text">Admin List</span>
-          )}
-        </button>
+        <Link to="/university-list">
+          <button className="university-icon">
+            <img
+              className="university-icon1"
+              alt=""
+              src="/images/vector6.svg"
+            />
+            {isExpanded && showText && (
+              <span className="sidebar-text">University List</span>
+            )}
+          </button>
+        </Link>
+        <Link to="/roles-and-permissions">
+          <button className="roles-and-permissions">
+            <img
+              className="roles-and-permissions1"
+              alt=""
+              src="/images/vector2.svg"
+            />
+            {isExpanded && showText && (
+              <span className="sidebar-text">Roles and Permissions</span>
+            )}
+          </button>
+        </Link>
+        <Link to={"/graduate-list"}>
+          <button className="users-icon">
+            <img
+              className="users-icon1"
+              alt=""
+              src="/images/users-icon-1.svg"
+            />
+            {isExpanded && showText && (
+              <span className="sidebar-text">Graduate List</span>
+            )}
+          </button>
+        </Link>
+        <Link to="/admin-list">
+          <button className="admin-list">
+            <img
+              className="admin-list-icon"
+              alt=""
+              src="/images/vector11.svg"
+            />
+            {isExpanded && showText && (
+              <span className="sidebar-text">Admin List</span>
+            )}
+          </button>
+        </Link>
         <Link to="/graduate-dashboard">
           {" "}
           <button className="home-icon">
             <img className="home-icon1" alt="" src="/images/home-icon.svg" />
             {isExpanded && showText && (
-              <span className="sidebar-text">Home</span>
+              <span className="sidebar-text">Dashboard</span>
             )}
           </button>
         </Link>

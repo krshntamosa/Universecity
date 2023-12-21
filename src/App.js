@@ -10,17 +10,13 @@ import PrivateRoute from "./PrivateRoute";
 import Testing from "./Testing/Testing";
 import ProfileView from "./ProfileView/ProfileView";
 import WorkHistory from "./ProfileView/WorkHistory";
+import GraduateList from "./GraduateList/GraduateList";
+import UniversityList from "./UniversityList/UniversityList";
+import AdminList from "./AdminList/AdminList";
+import RolesandPerm from "./RolesandPerm/RolesandPerm";
 
 const App = () => {
   const [user] = useAuthState(auth);
-
-  // const PrivateRoute = ({ path, element }) => {
-  //   return user ? (
-  //     <Route path={path} element={element} />
-  //   ) : (
-  //     <Navigate to="/login" replace />
-  //   );
-  // };
 
   return (
     <Router>
@@ -32,15 +28,10 @@ const App = () => {
         <Route path="/graduate-dashboard" element={<GraduateDash />} />
         <Route path="/testing" element={<WorkHistory />} />
         <Route path="/profile-view" element={<ProfileView />} />
-
-        {/* <Route
-          path="/graduate-dash"
-          element={
-            <PrivateRoute>
-              <GraduateDash />
-            </PrivateRoute>
-          }
-        /> */}
+        <Route path="/graduate-list" element={<GraduateList />} />
+        <Route path="/university-list" element={<UniversityList />} />
+        <Route path="/admin-list" element={<AdminList />} />
+        <Route path="/roles-and-permissions" element={<RolesandPerm />} />
       </Routes>
     </Router>
   );
