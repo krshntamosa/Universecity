@@ -1,458 +1,4 @@
-@import url("UniversityGraduateList.module.css");
-.line-div,
-.list-child,
-.list-inner,
-.list-item {
-  position: absolute;
-  top: 854.5px;
-  left: 47.5px;
-  border-top: 1px solid var(--color-darkgray);
-  box-sizing: border-box;
-  width: 806px;
-  height: 1px;
-}
-.line-div,
-.list-inner,
-.list-item {
-  top: 796.5px;
-  left: 48.5px;
-}
-.line-div,
-.list-inner {
-  top: 747.5px;
-}
-.line-div {
-  top: 692.5px;
-  left: 47.5px;
-}
-.list-child1,
-.list-child2,
-.list-child3,
-.list-child4,
-.list-child5,
-.list-child6,
-.list-child7,
-.list-child8,
-.list-child9 {
-  position: absolute;
-  top: 634.5px;
-  left: 48.5px;
-  border-top: 1px solid var(--color-darkgray);
-  box-sizing: border-box;
-  width: 806px;
-  height: 1px;
-}
-.list-child2,
-.list-child3,
-.list-child4,
-.list-child5,
-.list-child6,
-.list-child7,
-.list-child8,
-.list-child9 {
-  top: 576.5px;
-  left: 47.5px;
-}
-.list-child3,
-.list-child4,
-.list-child5,
-.list-child6,
-.list-child7,
-.list-child8,
-.list-child9 {
-  top: 521.5px;
-  left: 48.5px;
-}
-.list-child4,
-.list-child5,
-.list-child6,
-.list-child7,
-.list-child8,
-.list-child9 {
-  top: 466.5px;
-  left: 47.5px;
-}
-.list-child5,
-.list-child6,
-.list-child7,
-.list-child8,
-.list-child9 {
-  top: 411.5px;
-}
-.list-child6,
-.list-child7,
-.list-child8,
-.list-child9 {
-  top: 353.5px;
-  left: 48.5px;
-}
-.list-child7,
-.list-child8,
-.list-child9 {
-  top: 298.5px;
-}
-.list-child8,
-.list-child9 {
-  top: 243.5px;
-}
-.list-child9 {
-  top: 188.5px;
-  left: 47.5px;
-}
-.list-text {
-  position: relative;
-}
-.frame1 {
-  width: 315px;
-  height: 23px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--gap-86xl);
-}
-.view {
-  cursor: pointer;
-  border: 0;
-  padding: 0;
-  background-color: transparent;
-  position: relative;
-  font-size: var(--font-size-lg);
-  font-weight: 500;
-  font-family: var(--font-poppins);
-  color: var(--color-royalblue);
-  text-align: left;
-  display: inline-block;
-}
-.view:hover {
-  text-decoration: underline; /* Underline the text when the button is hovered */
-}
-.frame2 {
-  width: 243px;
-  height: 27px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--gap-138xl);
-}
-.frame {
-  position: absolute;
-  top: 203px;
-  left: 109px;
-  width: 683px;
-  height: 27px;
-  gap: 125px;
-}
-.frame,
-.frame3,
-.frame4,
-.frame5 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.frame4 {
-  width: 317px;
-  height: 23px;
-  flex-shrink: 0;
-  gap: 126px;
-}
-.frame3,
-.frame5 {
-  height: 28px;
-}
-.frame5 {
-  width: 252px;
-  flex-shrink: 0;
-  padding: 0 0 var(--padding-12xs);
-  box-sizing: border-box;
-  gap: 148px;
-}
-.frame3 {
-  position: absolute;
-  top: 258px;
-  left: 109px;
-  width: 683px;
-  gap: var(--gap-95xl);
-}
-.frame7 {
-  width: 319px;
-  height: 24px;
-  flex-shrink: 0;
-  gap: 104px;
-}
-.frame10,
-.frame6,
-.frame7 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.frame6 {
-  position: absolute;
-  top: 313px;
-  left: 107px;
-  width: 685px;
-  height: 27px;
-  gap: var(--gap-104xl);
-}
-.frame10 {
-  width: 318px;
-  height: 24px;
-  flex-shrink: 0;
-  gap: 109px;
-}
-.frame11,
-.frame9 {
-  align-items: flex-start;
-}
-.frame11 {
-  width: 243px;
-  height: 27px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: var(--gap-138xl);
-}
-.frame9 {
-  position: absolute;
-  top: 368px;
-  left: 108px;
-  width: 684px;
-  height: 28px;
-  gap: var(--gap-104xl);
-}
-.frame12,
-.frame13,
-.frame14,
-.frame9 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.frame13 {
-  width: 312px;
-  height: 23px;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 108px;
-}
-.frame12,
-.frame14 {
-  height: 27px;
-  align-items: flex-start;
-}
-.frame14 {
-  width: 259px;
-  flex-shrink: 0;
-  gap: var(--gap-115xl);
-}
-.frame12 {
-  position: absolute;
-  top: 428px;
-  left: 108px;
-  width: 684px;
-  gap: var(--gap-94xl);
-}
-.frame16 {
-  width: 309px;
-  height: 25px;
-  flex-shrink: 0;
-  align-items: center;
-  gap: var(--gap-86xl);
-}
-.frame15,
-.frame16,
-.frame19 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.frame15 {
-  position: absolute;
-  top: 481px;
-  left: 109px;
-  width: 683px;
-  height: 29px;
-  align-items: flex-start;
-  gap: 115px;
-}
-.frame19 {
-  width: 323px;
-  height: 25px;
-  flex-shrink: 0;
-  gap: var(--gap-86xl);
-}
-.frame18,
-.frame19,
-.frame22 {
-  align-items: flex-start;
-}
-.frame18 {
-  position: absolute;
-  top: 536px;
-  left: 108px;
-  width: 684px;
-  height: 30px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  padding: 3px 0 0;
-  box-sizing: border-box;
-  gap: 101px;
-}
-.frame22 {
-  width: 309px;
-  height: 26px;
-  flex-shrink: 0;
-  gap: 100px;
-}
-.frame21,
-.frame22,
-.frame25 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-}
-.frame21 {
-  position: absolute;
-  top: 594px;
-  left: 108px;
-  width: 684px;
-  height: 27px;
-  align-items: center;
-  gap: 116px;
-}
-.frame25 {
-  width: 305px;
-  height: 26px;
-  flex-shrink: 0;
-  align-items: flex-start;
-  gap: var(--gap-101xl);
-}
-.frame26 {
-  width: 259px;
-  height: 27px;
-  flex-shrink: 0;
-  gap: var(--gap-115xl);
-}
-.frame24,
-.frame26,
-.frame28 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.frame24 {
-  position: absolute;
-  top: 651px;
-  left: 108px;
-  width: 684px;
-  height: 27px;
-  gap: var(--gap-101xl);
-}
-.frame28 {
-  width: 310px;
-  height: 23px;
-  flex-shrink: 0;
-  gap: var(--gap-94xl);
-}
-.frame27,
-.frame30 {
-  position: absolute;
-  height: 27px;
-}
-.frame27 {
-  top: 706px;
-  left: 109px;
-  width: 683px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--gap-95xl);
-}
-.frame30 {
-  top: 813px;
-  left: 108px;
-  width: 684px;
-  gap: var(--gap-101xl);
-}
-.frame30,
-.frame33,
-.frame37,
-.frame38 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
-.frame33 {
-  position: absolute;
-  top: 868px;
-  left: 109px;
-  width: 683px;
-  height: 27px;
-  gap: var(--gap-95xl);
-}
-.frame37,
-.frame38 {
-  width: 310px;
-  height: 23px;
-  flex-shrink: 0;
-  gap: 93px;
-}
-.frame38 {
-  width: 244px;
-  height: 28px;
-  gap: 158px;
-}
-.frame36,
-.list {
-  position: absolute;
-  overflow: hidden;
-}
-.frame36 {
-  top: 761px;
-  left: 109px;
-  width: 684px;
-  height: 28px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 130px;
-}
-.list {
-  top: 125px;
-  left: 600px;
-  border-radius: 10px;
-  background-color: #fafafa;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 1450px;
-  height: 902px;
-  font-size: var(--font-size-mini);
-  color: var(--color-dimgray);
-}
+@import url("GraduateList.module.css");
 .action,
 .date-created,
 .name,
@@ -515,7 +61,7 @@
 .graduate-list {
   position: absolute;
   top: 161px;
-  left: 660px;
+  left: 510px;
   font-size: 45px;
   letter-spacing: -0.02em;
   font-weight: 600;
@@ -617,6 +163,7 @@
   height: 30px;
 }
 .filters1 {
+  cursor: pointer;
   border: 0;
   padding: 0;
   background-color: rgba(9, 17, 51, 0.99);
@@ -631,13 +178,17 @@
   align-items: center;
   justify-content: center;
 }
+.filters1:hover {
+  outline: 2px solid #3498db; /* Add a border to simulate highlighting on hover */
+}
 .filters {
-  position: absolute;
+  position: fixed;
   top: 80px;
-  left: 150px;
-  width: 362px;
+  left: 100px;
+  width: 30%;
   height: 944px;
   overflow: hidden;
+  margin-right: 20px;
   font-size: var(--font-size-smi);
 }
 .college-department-dropdown {
@@ -790,7 +341,7 @@
 }
 .sidebar {
   top: 80px;
-  left: 0;
+  left: 0px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: 0.5px solid var(--color-darkgray);
@@ -918,7 +469,7 @@
   font-family: var(--font-poppins);
 }
 @media screen and (max-width: 1px) {
-  .university-graduate-list {
+  .GraduateList {
     position: relative;
     width: 100%;
     height: 1024px;
@@ -928,4 +479,140 @@
     color: var(--color-black);
     font-family: var(--font-poppins);
   }
+}
+.white-background {
+  background-color: white;
+}
+
+.left-column h2 {
+  margin-top: 0;
+}
+
+/* Filter styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.checkbox-label {
+  margin-left: 10px;
+}
+
+/* Right column styles */
+
+.graduate-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.graduate-table th,
+.graduate-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.graduate-table th {
+  background-color: #f2f2f2;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 260px; /* Adjust the width as needed */
+  height: 40px;
+  background-color: #d5d3d3;
+  border-radius: var(--br-8xs);
+}
+
+/* Sort button */
+.sort-button {
+  cursor: pointer;
+  padding: 0;
+  background-color: transparent;
+  width: 29px;
+  height: 29px;
+  background-image: url("D:\School\SGTS_SDC\universecity\public\images\sort1@2x.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.search-input {
+  flex: 1;
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  width: 100%; /* Occupy remaining width */
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0 10px; /* Add left padding for text input */
+  box-sizing: border-box;
+}
+
+.search-button {
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr; /* Left column takes 1/4, right column takes 3/4 of the width */
+  grid-gap: 20px; /* Add a gap between columns */
+  margin-left: 100px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 800px;
+}
+
+.left-column {
+  margin-left: 100px;
+  padding: 20px;
+  background-color: #fafafa;
+  width: 300px;
+  height: 85vh;
+  border-radius: 10px;
+}
+.right-column {
+  margin-left: 10px;
+  margin-right: 80px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  overflow: auto;
+  border-radius: 10px;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.space {
+  margin-top: 50px;
+}
+
+.backgroundColor {
+  background-color: #f5f5f5;
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2133.33px;
+  height: 1032.22px;
+}
+
+.backgroundClr {
+  background-color: #f5f5f5;
 }
